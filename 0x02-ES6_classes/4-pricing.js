@@ -53,4 +53,5 @@ class Pricing {
  }
 }
 
+// Export the Pricing class
 module.exports = Pricing;
