@@ -1,18 +1,33 @@
-export default class Building {
-  constructor(sqft) {
-    if (this.constructor !== Building && this.evacuationWarningMessage === undefined) {
-      throw new Error('Class extending Building must override evacuationWarningMessage');
-    }
-    this.sqft = sqft;
-  }
+// Import the Building class
+import Building from './5-building.js';
 
-  get sqft() {
+class SkyHighBuilding extends Building {
+ constructor(sqft, floors) {
+    super(sqft); // Call the parent class constructor with sqft
+    this._floors = floors; // Store floors in an underscore-prefixed attribute
+ }
+
+ // Getter for sqft
+ get sqft() {
     return this._sqft;
-  }
+ }
 
-  set sqft(sqft) {
-    if (typeof sqft !== 'number') throw new TypeError('Sqft must be a number');
+ // Setter for sqft
+ set sqft(value) {
+    if (typeof value !== 'number') throw new TypeError('Sqft must be a number');
+    this._sqft = value;
+ }
 
-    this._sqft = sqft;
-  }
+ // Getter for floors
+ get floors() {
+    return this._floors;
+ }
+
+ // Override the evacuationWarningMessage method
+ evacuationWarningMessage() {
+    return `Evacuate slowly the ${this._floors} floors.`;
+ }
 }
+
+// Export the SkyHighBuilding class
+export default SkyHighBuilding;
