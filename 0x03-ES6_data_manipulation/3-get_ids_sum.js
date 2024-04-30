@@ -1,4 +1,4 @@
-export default function getStudentIdsSum(arr) {
+export default function getStudentIdsSum(aray) {
   if (Array.isArray(aray)) {
     return aray.reduce((ma, el) => ma + el.id, 0);
   }
